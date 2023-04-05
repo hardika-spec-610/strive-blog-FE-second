@@ -14,8 +14,13 @@ const BlogItem = (props) => {
           <Card.Title>{title}</Card.Title>
         </Card.Body>
         <Card.Footer>
-          <BlogAuthor {...author} />
-          <span>
+          <BlogAuthor
+            {...author[0]}
+            // avatar={author.avatar}
+            // name={author.name}
+            // surname={author.surname}
+          />
+          {/* <span>
             For mor info{" "}
             <a
               onClick={(e) => e.stopPropagation()}
@@ -23,7 +28,7 @@ const BlogItem = (props) => {
             >
               download PDF
             </a>
-          </span>
+          </span> */}
         </Card.Footer>
       </Card>
     </Link>

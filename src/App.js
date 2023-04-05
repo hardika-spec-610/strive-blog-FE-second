@@ -6,13 +6,17 @@ import Home from "./views/home/Home";
 import Blog from "./views/blog/Blog";
 import NewBlogPost from "./views/new/New";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import RegistrationForm from "./views/register/signUp";
+import LoginForm from "./views/login/login";
 
 function App() {
   return (
     <Router>
       <NavBar />
       <Routes>
-        <Route path="/" exact element={<Home />} />
+        <Route path="/" element={<LoginForm />} />
+        <Route path="/register" element={<RegistrationForm />} />
+        <Route path="/home" exact element={<Home />} />
         <Route path="/blog/:_id" element={<Blog />} />
         <Route path="/new" element={<NewBlogPost />} />
       </Routes>

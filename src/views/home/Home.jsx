@@ -6,7 +6,8 @@ import "./styles.css";
 const Home = (props) => {
   const [blogs, setBlogs] = useState([]);
   const [query, setQuery] = useState("");
-  console.log("blog", blogs);
+  const token = localStorage.getItem("accessToken");
+  // console.log("token", token);
 
   const getBlogs = async () => {
     try {
@@ -14,11 +15,15 @@ const Home = (props) => {
       // const response = await fetch(
       //   `${process.env.REACT_APP_BE_URL}/blogPosts/`
       // );
-      const response = await fetch(`${apiUrl}/blogPosts`);
+      const response = await fetch(`${apiUrl}/blogPosts`, {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      });
       if (response.ok) {
         const data = await response.json();
-        console.log(blogs);
-        setBlogs(data);
+        console.log("data", data);
+        setBlogs(data.blogs);
       }
     } catch (error) {
       console.log(error);
