@@ -37,6 +37,8 @@ The app should now be running on [http://localhost:3000](http://localhost:3000).
 ## Images
 
 ![image](/public/img/login1.png)
-![image](/public/img/login2.png)
+
+<!-- ![image](/public/img/login2.png) -->
+
 ![image](/public/img/blogs1.png)
 ![image](/public/img/blog2.png)
