@@ -34,7 +34,7 @@ const RegistrationForm = () => {
   };
 
   return (
-    <Form onSubmit={handleSubmit} className="login-form ">
+    <Form onSubmit={handleSubmit} className="login-form justify-content-center">
       <Form.Group controlId="name">
         <Form.Label>Name</Form.Label>
         <Form.Control

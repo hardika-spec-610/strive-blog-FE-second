@@ -17,14 +17,20 @@ const Blog = (props) => {
   const [show, setShow] = useState(false);
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
+  const token = localStorage.getItem("accessToken");
+  // console.log("blogToken", token);
 
   const getBlogpost = async (id) => {
     try {
       const apiUrl = process.env.REACT_APP_BE_URL;
-      const res = await fetch(`${apiUrl}/blogPosts/${id}`);
+      const res = await fetch(`${apiUrl}/blogPosts/${id}`, {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      });
       if (res.ok) {
         const data = await res.json();
-        // console.log("blogdata".data);
+        console.log("blogdata".data);
         setBlog(data);
         setLoading(false);
         console.log(blog);
@@ -66,16 +72,23 @@ const Blog = (props) => {
     return (
       <div className="blog-details-root">
         <Container>
-          <Image className="blog-details-cover" src={blog.cover} fluid />
-          <form onSubmit={handleSubmit}>
+          <div className="image-container">
+            <img
+              className="blog-details-cover"
+              src={blog.cover}
+              alt="blog post"
+            />
+          </div>
+          <form onSubmit={handleSubmit} className="postimage-form">
             <input
+              className="w-50"
               type="file"
               onChange={(e) => {
                 setImage(e.target.files[0]);
               }}
             />
             <Button
-              className="mt-2"
+              className="mt-2 w-25"
               variant="primary"
               onClick={handleClose}
               type="submit"
@@ -88,7 +101,7 @@ const Blog = (props) => {
 
           <div className="blog-details-container">
             <div className="blog-details-author">
-              <BlogAuthor {...blog.author} />
+              <BlogAuthor {...blog.author[0]} />
             </div>
             <div className="blog-details-info">
               <div>{format(parseISO(blog.createdAt), "dd MMM yyyy")}</div>

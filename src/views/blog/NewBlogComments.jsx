@@ -54,7 +54,9 @@ const NewBlogComments = (props) => {
             onChange={(e) => setComment({ ...comment, text: e.target.value })}
           ></Form.Control>
         </Form.Group>
-        <Button type="submit">Submit</Button>
+        <Button type="submit" className="mt-4">
+          Submit
+        </Button>
       </Form>
     </Container>
   );

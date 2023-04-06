@@ -6,7 +6,7 @@ const NavBar = (props) => {
   return (
     <Navbar expand="lg" className="blog-navbar" fixed="top">
       <Container className="justify-content-between">
-        <Navbar.Brand as={Link} to="/home">
+        <Navbar.Brand as={Link} to="/">
           <img className="blog-navbar-brand" alt="logo" src="logo.svg" />
         </Navbar.Brand>
 

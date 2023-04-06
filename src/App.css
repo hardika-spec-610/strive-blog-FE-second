@@ -1,4 +1,11 @@
+html {
+  font-family: "Outfit", sans-serif;
+  height: 100vh;
+}
 body {
   font-family: "Outfit", sans-serif;
-  height: 100%;
+  height: 84vh;
+}
+#root {
+  height: 98%;
 }

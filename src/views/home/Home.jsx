@@ -2,16 +2,19 @@ import React, { useEffect, useState } from "react";
 import { Container, Form } from "react-bootstrap";
 import BlogList from "../../components/blog/blog-list/BlogList";
 import "./styles.css";
+import { useNavigate, useSearchParams } from "react-router-dom";
 
 const Home = (props) => {
   const [blogs, setBlogs] = useState([]);
   const [query, setQuery] = useState("");
   const token = localStorage.getItem("accessToken");
+  const [searchParams] = useSearchParams();
+  const navigate = useNavigate();
   // console.log("token", token);
+  const apiUrl = process.env.REACT_APP_BE_URL;
 
   const getBlogs = async () => {
     try {
-      const apiUrl = process.env.REACT_APP_BE_URL;
       // const response = await fetch(
       //   `${process.env.REACT_APP_BE_URL}/blogPosts/`
       // );
@@ -30,9 +33,15 @@ const Home = (props) => {
     }
   };
   useEffect(() => {
-    getBlogs();
+    if (!localStorage.getItem("accessToken")) navigate("/login");
+    if (searchParams.get("accessToken")) {
+      localStorage.setItem("accessToken", searchParams.get("accessToken"));
+      getBlogs();
+      // navigate(`${apiUrl}/blogPosts`);
+    }
+
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
+  }, [searchParams]);
   const handleChange = (e) => {
     setQuery(e.target.value);
   };
