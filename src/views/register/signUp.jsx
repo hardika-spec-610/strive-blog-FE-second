@@ -34,7 +34,10 @@ const RegistrationForm = () => {
   };
 
   return (
-    <Form onSubmit={handleSubmit} className="login-form justify-content-center">
+    <Form
+      onSubmit={handleSubmit}
+      className="login-form justify-content-center w-50"
+    >
       <Form.Group controlId="name">
         <Form.Label>Name</Form.Label>
         <Form.Control

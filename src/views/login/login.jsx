@@ -2,6 +2,7 @@ import { Button, Col, Container, Form, Row } from "react-bootstrap";
 import "../register/styles.css";
 import { Link, useNavigate } from "react-router-dom";
 import { useState } from "react";
+import { toast } from "react-toastify";
 
 const LoginForm = () => {
   const navigate = useNavigate();
@@ -19,6 +20,7 @@ const LoginForm = () => {
       });
 
       if (response.ok) {
+        toast("Login successfull! 💪", { autoClose: 1000 });
         const data = await response.json();
         console.log("logindata", data);
         // console.log("accessToken", data.accessToken);

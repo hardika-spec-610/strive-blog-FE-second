@@ -33,10 +33,11 @@ const Home = (props) => {
     }
   };
   useEffect(() => {
+    getBlogs();
     if (!localStorage.getItem("accessToken")) navigate("/login");
     if (searchParams.get("accessToken")) {
       localStorage.setItem("accessToken", searchParams.get("accessToken"));
-      getBlogs();
+
       // navigate(`${apiUrl}/blogPosts`);
     }
 
